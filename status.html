@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>AARS — Retrieval Status</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body class="dashboard-page">
+
+<header class="topbar">
+
+    <div class="brand-small">
+
+        <div class="aars-mark small">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <strong>AARS</strong>
+
+    </div>
+
+    <div class="system-online">
+        <span class="pulse"></span>
+        RETRIEVAL ACTIVE
+    </div>
+
+</header>
+
+
+<main class="status-container">
+
+    <p class="eyebrow">
+        REQUEST {{ req.id }}
+    </p>
+
+    <h1>
+        Retrieval in motion<span>.</span>
+    </h1>
+
+    <div class="status-hero">
+
+        <div class="status-orbit">
+
+            <div class="orbit-ring"></div>
+
+            <div class="status-core">
+                ⚡
+            </div>
+
+        </div>
+
+        <div class="status-details">
+
+            <small>ITEM</small>
+
+            <h2>{{ req.item }}</h2>
+
+            <p>{{ req.location }}</p>
+
+            <div class="current-status">
+                {{ req.status }}
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <section class="timeline">
+
+        <div class="timeline-step active">
+            <span>01</span>
+            <strong>SEARCHING</strong>
+        </div>
+
+        <div class="timeline-line"></div>
+
+        <div class="timeline-step">
+            <span>02</span>
+            <strong>PICKING</strong>
+        </div>
+
+        <div class="timeline-line"></div>
+
+        <div class="timeline-step">
+            <span>03</span>
+            <strong>DELIVERING</strong>
+        </div>
+
+        <div class="timeline-line"></div>
+
+        <div class="timeline-step">
+            <span>04</span>
+            <strong>COMPLETED</strong>
+        </div>
+
+    </section>
+
+
+    <a
+        href="{{ url_for('dashboard') }}"
+        class="secondary-button"
+    >
+        BACK TO CONTROL DESK
+    </a>
+
+</main>
+
+</body>
+</html>

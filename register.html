@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AARS — Register</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body class="auth-page">
+
+    <div class="noise"></div>
+
+    <main class="register-wrapper">
+
+        <div class="register-card">
+
+            <div class="brand-top">
+
+                <div class="aars-mark">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <div>
+                    <h1>AARS</h1>
+                    <small>AUTOMATIC RETRIEVAL SYSTEM</small>
+                </div>
+
+            </div>
+
+            <p class="eyebrow">NEW USER / REGISTRATION</p>
+
+            <h2>Create your workspace<span>.</span></h2>
+
+            {% if error %}
+                <div class="error-message">
+                    {{ error }}
+                </div>
+            {% endif %}
+
+            <form method="POST">
+
+                <label>Full name</label>
+
+                <input
+                    type="text"
+                    name="name"
+                    placeholder="Your name"
+                    required
+                >
+
+                <label>Email address</label>
+
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="you@example.com"
+                    required
+                >
+
+                <label>Password</label>
+
+                <input
+                    type="password"
+                    name="password"
+                    placeholder="Create password"
+                    required
+                >
+
+                <button class="primary-button" type="submit">
+                    CREATE ACCOUNT
+                    <span>→</span>
+                </button>
+
+            </form>
+
+            <div class="register-line">
+                Already registered?
+                <a href="{{ url_for('login') }}">
+                    Sign in
+                </a>
+            </div>
+
+        </div>
+
+    </main>
+
+</body>
+</html>

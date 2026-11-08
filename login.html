@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AARS — Login</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="auth-page">
+
+    <div class="noise"></div>
+
+    <main class="auth-shell">
+
+        <!-- LEFT SIDE -->
+        <section class="brand-zone">
+
+            <div class="brand-top">
+                <div class="aars-mark">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <div>
+                    <h1>AARS</h1>
+                    <small>AUTOMATIC RETRIEVAL SYSTEM</small>
+                </div>
+            </div>
+
+            <div class="brand-message">
+
+                <p class="eyebrow">MODULE 01 / ACCESS</p>
+
+                <h2>
+                    REQUEST.<br>
+                    RETRIEVE.<br>
+                    <span>TRACK.</span>
+                </h2>
+
+                <p>
+                    A human-centred interface for interacting
+                    with an automated retrieval environment.
+                </p>
+
+            </div>
+
+            <div class="system-state">
+                <span class="pulse"></span>
+                SYSTEM READY
+                <span class="state-line"></span>
+                AARS-01
+            </div>
+
+        </section>
+
+
+        <!-- RIGHT SIDE -->
+        <section class="login-zone">
+
+            <div class="login-card">
+
+                <div class="mini-label">
+                    USER ACCESS
+                </div>
+
+                <h2>Welcome back<span>.</span></h2>
+
+                <p class="subtext">
+                    Enter your details to access the retrieval workspace.
+                </p>
+
+                {% if error %}
+                    <div class="error-message">
+                        {{ error }}
+                    </div>
+                {% endif %}
+
+                <form method="POST">
+
+                    <label>Email address</label>
+
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="you@example.com"
+                        required
+                    >
+
+                    <label>Password</label>
+
+                    <input
+                        type="password"
+                        name="password"
+                        placeholder="Enter password"
+                        required
+                    >
+
+                    <button class="primary-button" type="submit">
+                        ENTER AARS
+                        <span>→</span>
+                    </button>
+
+                </form>
+
+                <div class="register-line">
+                    New to AARS?
+                    <a href="{{ url_for('register') }}">
+                        Create account
+                    </a>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+</html>

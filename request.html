@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>AARS — Request</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body class="dashboard-page">
+
+<header class="topbar">
+
+    <div class="brand-small">
+
+        <div class="aars-mark small">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <strong>AARS</strong>
+
+    </div>
+
+    <a class="logout"
+       href="{{ url_for('dashboard') }}">
+        ← DASHBOARD
+    </a>
+
+</header>
+
+
+<main class="request-container">
+
+    <p class="eyebrow">REQUEST / ITEM {{ item.id }}</p>
+
+    <h1>Prepare retrieval<span>.</span></h1>
+
+    <div class="request-layout">
+
+        <section class="selected-item">
+
+            <div class="big-item-icon">
+                {{ item.icon }}
+            </div>
+
+            <small>{{ item.location }}</small>
+
+            <h2>{{ item.name }}</h2>
+
+            <p>
+                {{ item.stock }} units currently available
+            </p>
+
+        </section>
+
+
+        <form
+            method="POST"
+            class="request-form"
+        >
+
+            <label>Quantity</label>
+
+            <div class="quantity-control">
+
+                <button type="button"
+                        onclick="changeQuantity(-1)">
+                    −
+                </button>
+
+                <input
+                    id="quantity"
+                    name="quantity"
+                    value="1"
+                    readonly
+                >
+
+                <button type="button"
+                        onclick="changeQuantity(1)">
+                    +
+                </button>
+
+            </div>
+
+
+            <label>Priority</label>
+
+            <div class="priority-options">
+
+                <label>
+                    <input
+                        type="radio"
+                        name="priority"
+                        value="Normal"
+                        checked
+                    >
+                    Normal
+                </label>
+
+                <label>
+                    <input
+                        type="radio"
+                        name="priority"
+                        value="Urgent"
+                    >
+                    Urgent
+                </label>
+
+            </div>
+
+
+            <button
+                class="primary-button big"
+                type="submit"
+            >
+                INITIATE RETRIEVAL
+                <span>⚡</span>
+            </button>
+
+        </form>
+
+    </div>
+
+</main>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>

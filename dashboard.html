@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AARS — Dashboard</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body class="dashboard-page">
+
+<header class="topbar">
+
+    <div class="brand-small">
+
+        <div class="aars-mark small">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <strong>AARS</strong>
+
+    </div>
+
+    <div class="system-online">
+        <span class="pulse"></span>
+        SYSTEM ONLINE
+    </div>
+
+    <a class="logout"
+       href="{{ url_for('logout') }}">
+        EXIT →
+    </a>
+
+</header>
+
+
+<main class="dashboard-container">
+
+    <section class="welcome">
+
+        <div>
+
+            <p class="eyebrow">
+                CONTROL DESK / 01
+            </p>
+
+            <h1>
+                Good evening,
+                <span>{{ name }}</span>.
+            </h1>
+
+            <p>
+                What are we retrieving today?
+            </p>
+
+        </div>
+
+        <div class="date-chip">
+            AARS // LOCAL NODE
+        </div>
+
+    </section>
+
+
+    <section class="stats">
+
+        <div class="stat-card orange">
+
+            <small>AVAILABLE ITEMS</small>
+
+            <strong>{{ items|length }}</strong>
+
+            <span>IN INVENTORY</span>
+
+        </div>
+
+        <div class="stat-card">
+
+            <small>ACTIVE REQUESTS</small>
+
+            <strong>{{ active }}</strong>
+
+            <span>IN PROGRESS</span>
+
+        </div>
+
+        <div class="stat-card">
+
+            <small>COMPLETED</small>
+
+            <strong>{{ completed }}</strong>
+
+            <span>THIS SESSION</span>
+
+        </div>
+
+    </section>
+
+
+    <section class="inventory-header">
+
+        <div>
+            <p class="eyebrow">INVENTORY</p>
+            <h2>Find an item</h2>
+        </div>
+
+        <div class="search-box">
+            <span>⌕</span>
+            <input
+                id="itemSearch"
+                type="text"
+                placeholder="Search components..."
+            >
+        </div>
+
+    </section>
+
+
+    <section class="inventory-grid">
+
+        {% for item in items %}
+
+        <article class="item-card">
+
+            <div class="item-icon">
+                {{ item.icon }}
+            </div>
+
+            <div class="item-info">
+
+                <small>{{ item.location }}</small>
+
+                <h3>{{ item.name }}</h3>
+
+                <p>
+                    {{ item.stock }} units available
+                </p>
+
+            </div>
+
+            <a
+                class="request-arrow"
+                href="{{ url_for('request_item', item_id=item.id) }}"
+            >
+                →
+            </a>
+
+        </article>
+
+        {% endfor %}
+
+    </section>
+
+</main>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
